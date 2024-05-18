@@ -1,14 +1,14 @@
-import { DataSource } from 'typeorm';
-import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions';
-import { ConfigService } from '@nestjs/config';
-import { Injectable } from '@nestjs/common';
+import { DataSource } from 'typeorm'
+import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions'
+import { ConfigService } from '@nestjs/config'
+import { Injectable } from '@nestjs/common'
 
 export interface DatabaseConfigType {
-  host: string;
-  port: number;
-  db_name: string;
-  user: string;
-  password: string;
+  host: string
+  port: number
+  db_name: string
+  user: string
+  password: string
 }
 
 @Injectable()
@@ -22,7 +22,7 @@ export class DatabaseConfigService {
       db_name: this.configService.get<string>('DB_NAME'),
       user: this.configService.get<string>('DB_USER'),
       password: this.configService.get<string>('DB_PASSWORD'),
-    };
+    }
   }
 }
 
@@ -42,9 +42,9 @@ export const databaseConfig = (
   synchronize: false,
   connectTimeoutMS: 10_000,
   parseInt8: true,
-});
+})
 
 export const dataSource = (configService: ConfigService): DataSource => {
-  console.log(databaseConfig(configService));
-  return new DataSource(databaseConfig(configService));
-};
+  console.log(databaseConfig(configService))
+  return new DataSource(databaseConfig(configService))
+}
