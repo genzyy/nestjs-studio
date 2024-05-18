@@ -36,8 +36,9 @@ export const databaseConfig = (
   database: configService.get<string>('DB_NAME'),
   username: configService.get<string>('DB_USER'),
   password: configService.get<string>('DB_PASSWORD'),
-  entities: [__dirname + '/*.entity.ts'],
+  entities: [__dirname + '/**/*.entity.ts'],
   migrations: [__dirname + '/migrations/*.{js,ts}'],
+  migrationsTableName: 'migration',
   migrationsRun: false,
   synchronize: false,
   connectTimeoutMS: 10_000,
@@ -45,6 +46,5 @@ export const databaseConfig = (
 })
 
 export const dataSource = (configService: ConfigService): DataSource => {
-  console.log(databaseConfig(configService))
   return new DataSource(databaseConfig(configService))
 }
