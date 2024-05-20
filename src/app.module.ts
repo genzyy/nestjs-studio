@@ -5,6 +5,7 @@ import { AppController } from './app.controller'
 import { AppService } from './app.service'
 import { databaseConfig } from './config/database.config'
 import { ArtistModule } from './artist/artist.module'
+import { DrumModule } from './drums/drum.module'
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { ArtistModule } from './artist/artist.module'
         databaseConfig(configService),
     }),
     ArtistModule,
+    DrumModule,
   ],
   controllers: [AppController],
   providers: [AppService],
