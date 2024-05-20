@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm'
+import { Artist } from 'src/artist/artist.entity'
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm'
 
 export enum Collection {
   METRO = 'metro',
@@ -28,4 +29,7 @@ export class Drum {
 
   @Column('timestamptz', { nullable: true })
   updatedAt: Date | null
+
+  @ManyToOne(() => Artist, (artist) => artist.drums)
+  artist: Artist
 }

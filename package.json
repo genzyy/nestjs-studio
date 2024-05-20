@@ -18,7 +18,8 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js migration:run -d ./src/config/datasource.js"
+    "typeorm:generate": "ts-node-dev ./node_modules/typeorm/cli.js migration:generate ./src/migrations/1716213225490-drumTable.ts -d ./src/config/datasource.js",
+    "typeorm:run": "ts-node-dev ./node_modules/typeorm/cli.js migration:run -d ./src/config/datasource.js"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",

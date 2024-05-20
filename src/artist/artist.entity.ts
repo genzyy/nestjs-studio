@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm'
+import { Drum } from 'src/drums/drum.entity'
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm'
 
 @Entity('artist')
 export class Artist {
@@ -25,4 +26,7 @@ export class Artist {
 
   @Column({ type: 'timestamptz' })
   sessionEndedAt: Date
+
+  @OneToMany(() => Drum, (drum) => drum.artist)
+  drums: Drum[]
 }
