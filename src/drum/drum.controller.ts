@@ -9,6 +9,7 @@ export class DrumController {
 
   @Post()
   createNewDrum(@Body() drumCreate: DrumCreate, @Req() req: Request) {
+    console.log(req.body)
     return this.drumRepository.create(drumCreate, 1)
   }
 }
