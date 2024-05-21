@@ -1,3 +1,4 @@
+import { MiddlewareConsumer, NestModule } from '@nestjs/common'
 import { Module } from '@nestjs/common'
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { TypeOrmModule } from '@nestjs/typeorm'
@@ -5,7 +6,10 @@ import { AppController } from './app.controller'
 import { AppService } from './app.service'
 import { databaseConfig } from './config/database.config'
 import { ArtistModule } from './artist/artist.module'
-import { DrumModule } from './drums/drum.module'
+import { DrumModule } from './drum/drum.module'
+import { AuthMiddleware } from './middleware/auth.middleware'
+import { ArtistController } from './artist/artist.controller'
+import { DrumController } from './drum/drum.controller'
 
 @Module({
   imports: [
@@ -25,4 +29,8 @@ import { DrumModule } from './drums/drum.module'
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(AuthMiddleware).forRoutes(ArtistController, DrumController)
+  }
+}
