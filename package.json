@@ -18,7 +18,8 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "typeorm:generate": "ts-node-dev ./node_modules/typeorm/cli.js migration:generate ./src/migrations/1716213225490-drumTable.ts -d ./src/config/datasource.js",
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
+    "typeorm:generate": "typeorm migration:generate",
     "typeorm:run": "ts-node-dev ./node_modules/typeorm/cli.js migration:run -d ./src/config/datasource.js"
   },
   "dependencies": {
@@ -28,6 +29,8 @@
     "@nestjs/platform-express": "^10.0.0",
     "@nestjs/typeorm": "^10.0.2",
     "dotenv": "^16.4.5",
+    "jsonwebtoken": "^9.0.2",
+    "luxon": "^3.4.4",
     "pg": "^8.11.5",
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1",
@@ -40,6 +43,8 @@
     "@nestjs/testing": "^10.0.0",
     "@types/express": "^4.17.17",
     "@types/jest": "^29.5.2",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/luxon": "^3.4.2",
     "@types/node": "^20.12.12",
     "@types/supertest": "^6.0.0",
     "@types/uuid": "^9.0.8",

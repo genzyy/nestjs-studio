@@ -1,4 +1,4 @@
-import { Drum } from 'src/drums/drum.entity'
+import { Drum } from 'src/drum/drum.entity'
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm'
 
 @Entity('artist')
